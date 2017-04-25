@@ -1,0 +1,15 @@
+[OSEv3:children]
+masters
+nodes
+
+[OSEv3:vars]
+ansible_ssh_user=root
+deployment_type=origin
+
+[masters]
+master  master=True
+
+[nodes]
+node0  openshift_schedulable=True
+node1  openshift_schedulable=True
+node2  openshift_schedulable=True

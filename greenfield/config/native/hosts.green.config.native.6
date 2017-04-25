@@ -1,0 +1,30 @@
+[OSEv3:children]
+masters
+nodes
+glusterfs
+
+[OSEv3:vars]
+ansible_ssh_user=root
+deployment_type=origin
+openshift_hosted_registry_storage_kind=glusterfs
+
+[masters]
+master  master=True
+
+[nodes]
+node0  openshift_schedulable=True
+node1  openshift_schedulable=True
+node2  openshift_schedulable=True
+node3  openshift_schedulable=True openshift_node_labels="{'region': 'infra'}"
+node4  openshift_schedulable=True openshift_node_labels="{'region': 'infra'}"
+node5  openshift_schedulable=True openshift_node_labels="{'region': 'infra'}"
+
+[glusterfs]
+node0  glusterfs_devices='[ "/dev/sdb", "/dev/sdc", "/dev/sdd" ]'
+node1  glusterfs_devices='[ "/dev/sdb", "/dev/sdc", "/dev/sdd" ]'
+node2  glusterfs_devices='[ "/dev/sdb", "/dev/sdc", "/dev/sdd" ]'
+
+[glusterfs_registry]
+node3  glusterfs_devices='[ "/dev/sdb", "/dev/sdc", "/dev/sdd" ]'
+node4  glusterfs_devices='[ "/dev/sdb", "/dev/sdc", "/dev/sdd" ]'
+node5  glusterfs_devices='[ "/dev/sdb", "/dev/sdc", "/dev/sdd" ]'
